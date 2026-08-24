@@ -1,0 +1,757 @@
+/* =========================================================
+   FLIGHT BOOKING - LANDING PAGE STYLES
+   Mục lục:
+   1. Reset & biến dùng chung (CSS variables)
+   2. Thiết lập chung (typography, container)
+   3. Header & Navigation
+   4. Buttons
+   5. Hero section
+   6. Zalo chat bubble
+   7. Content sections dùng chung (About / Service / Contact / FAQ)
+   8. Footer
+   9. Responsive
+   ========================================================= */
+
+/* ---------- 1. RESET & VARIABLES ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Màu sắc */
+  --color-primary: #1a56c4;
+  --color-primary-dark: #123a7a;
+  --color-primary-light: #eaf4ff;
+  --color-accent: #f5a623;
+  --color-text: #16233d;
+  --color-text-muted: #62718a;
+  --color-border: #e3edf7;
+  --color-white: #ffffff;
+  --color-zalo: #0068ff;
+
+  /* Nền gradient khu vực hero */
+  --gradient-hero: linear-gradient(180deg, #ffffff 0%, #eaf4ff 60%, #dceefb 100%);
+  --gradient-btn: linear-gradient(135deg, #2f6fed 0%, #1a56c4 100%);
+
+  /* Kích thước dùng chung */
+  --container-width: 1200px;
+  --radius-full: 999px;
+  --radius-lg: 18px;
+  --shadow-btn: 0 12px 24px -8px rgba(26, 86, 196, 0.55);
+  --transition: 0.25s ease;
+}
+
+/* ---------- 2. GENERAL SETUP ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ---------- 3. HEADER & NAVIGATION ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-primary-dark);
+}
+
+.logo__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav__link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+/* Nút hamburger (chỉ hiện ở mobile) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+}
+
+.nav__toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-primary-dark);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav__toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- 4. BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 42px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn--primary {
+  background: var(--gradient-btn);
+  color: var(--color-white);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px -6px rgba(26, 86, 196, 0.6);
+}
+
+/* ---------- 5. HERO SECTION ---------- */
+.hero {
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding-block: 72px;
+  min-height: calc(100vh - 84px);
+}
+
+.hero__content {
+  flex: 1 1 460px;
+  max-width: 540px;
+}
+
+.hero__title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+
+.hero__title strong {
+  color: var(--color-primary-dark);
+  font-weight: 800;
+}
+
+.hero__subtitle {
+  margin-top: 18px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.hero__desc {
+  margin-top: 20px;
+  max-width: 420px;
+  color: var(--color-text-muted);
+  font-size: 15.5px;
+}
+
+.hero__content .btn {
+  margin-top: 36px;
+}
+
+.hero__dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 56px;
+}
+
+.hero__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.hero__dot--active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+.hero__media {
+  flex: 1 1 480px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__illustration {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+}
+
+/* ---------- 6. ZALO CHAT BUBBLE ---------- */
+.zalo-chat {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px -6px rgba(0, 104, 255, 0.55);
+  transition: transform var(--transition);
+}
+
+.zalo-chat:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.zalo-chat__icon {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Vòng sóng lan toả (ping) để thu hút chú ý */
+.zalo-chat__ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-zalo);
+  opacity: 0.55;
+  animation: zalo-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes zalo-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* Tooltip hiện khi hover (chỉ hữu ích trên desktop) */
+.zalo-chat__tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: var(--color-text);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.zalo-chat__tooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: var(--color-text);
+}
+
+.zalo-chat:hover .zalo-chat__tooltip,
+.zalo-chat:focus-visible .zalo-chat__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ---------- 7. CONTENT SECTIONS (About / Service / Contact / FAQ) ---------- */
+.section {
+  padding-block: 96px;
+}
+
+.section:nth-of-type(even) {
+  background: var(--color-primary-light);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-top: 10px;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+}
+
+.section-desc {
+  margin-top: 14px;
+  color: var(--color-text-muted);
+  font-size: 15.5px;
+}
+
+.section-header {
+  max-width: 620px;
+  margin-inline: auto;
+  margin-bottom: 52px;
+  text-align: center;
+}
+
+/* --- About --- */
+.about__inner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.about__media {
+  flex: 0 0 220px;
+  width: 220px;
+}
+
+.about__content {
+  flex: 1;
+}
+
+.about__stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+.about__stats strong {
+  display: block;
+  font-size: 26px;
+  color: var(--color-primary-dark);
+}
+
+.about__stats span {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+/* --- Service --- */
+.service__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.service-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 32px -16px rgba(26, 86, 196, 0.25);
+}
+
+.service-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.service-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.service-card h3 {
+  margin-top: 18px;
+  font-size: 18px;
+  color: var(--color-primary-dark);
+}
+
+.service-card p {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font-size: 14.5px;
+}
+
+/* --- Contact --- */
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.contact-card {
+  display: block;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-card:not(.contact-card--static):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 32px -16px rgba(26, 86, 196, 0.25);
+}
+
+.contact-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.contact-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-card h3 {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--color-primary-dark);
+}
+
+.contact-card p {
+  margin-top: 4px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.contact__cta {
+  display: flex;
+  width: fit-content;
+  margin: 44px auto 0;
+}
+
+/* --- FAQ --- */
+.faq__list {
+  max-width: 760px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__icon {
+  flex: none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.faq-item__icon::before,
+.faq-item__icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: transform var(--transition);
+}
+
+.faq-item__icon::before {
+  width: 100%;
+  height: 2px;
+}
+
+.faq-item__icon::after {
+  width: 2px;
+  height: 100%;
+}
+
+.faq-item[open] .faq-item__icon::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.faq-item p {
+  margin-top: 14px;
+  color: var(--color-text-muted);
+  font-size: 14.5px;
+}
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer {
+  background: var(--color-primary-dark);
+  padding-block: 32px;
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-footer .logo {
+  color: var(--color-white);
+}
+
+.site-footer__copy {
+  color: #b7c6e6;
+  font-size: 13.5px;
+}
+
+.site-footer__zalo {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity var(--transition);
+}
+
+.site-footer__zalo:hover {
+  opacity: 0.8;
+}
+
+/* ---------- 9. RESPONSIVE ---------- */
+@media (max-width: 960px) {
+  .hero__inner {
+    flex-direction: column;
+    text-align: center;
+    padding-block: 48px;
+    min-height: auto;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__desc {
+    margin-inline: auto;
+  }
+
+  .hero__dots {
+    justify-content: center;
+  }
+
+  .hero__title {
+    font-size: 46px;
+  }
+
+  .about__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about__stats {
+    justify-content: center;
+  }
+
+  .service__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition);
+  }
+
+  .nav--open {
+    max-height: 300px;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 24px 20px;
+  }
+
+  .nav__list li {
+    width: 100%;
+  }
+
+  .nav__link {
+    display: block;
+    padding: 12px 0;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 36px;
+  }
+
+  .hero__subtitle {
+    font-size: 18px;
+  }
+
+  .zalo-chat {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .zalo-chat__tooltip {
+    display: none;
+  }
+
+  .section {
+    padding-block: 64px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .service__grid,
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
