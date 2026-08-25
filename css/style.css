@@ -22,7 +22,7 @@
 }
 
 :root {
-   /* ===== THƯƠNG HIỆU NGUYỄN TRANG BOOKING ===== */
+  /* ===== THƯƠNG HIỆU NGUYỄN TRANG BOOKING ===== */
   --color-primary: #0789ad;
   --color-primary-dark: #075a73;
   --color-primary-light: #eef8fa;
@@ -110,8 +110,8 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -119,21 +119,26 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 84px;
+  gap: 24px;
+  height: 76px;
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
+  flex: 0 0 auto;
   gap: 10px;
   font-weight: 700;
   font-size: 20px;
   color: var(--color-primary-dark);
 }
+
 .logo__image {
-  width: 190px;
-  height: auto;
   display: block;
+  width: 155px;
+  height: auto;
+  max-width: 155px;
+  object-fit: contain;
 }
 
 .logo__badge {
@@ -149,11 +154,23 @@ button {
 .nav__list {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  gap: 28px;
+  flex-wrap: nowrap;
+  margin-left: auto;
+}
+
+.nav__list li {
+  flex: 0 0 auto;
 }
 
 .nav__link {
-  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 1.2;
   font-weight: 500;
   color: var(--color-text-muted);
   transition: color var(--transition);
@@ -173,6 +190,7 @@ button {
   gap: 5px;
   width: 32px;
   height: 32px;
+  flex: 0 0 auto;
 }
 
 .nav__toggle span {
@@ -187,9 +205,11 @@ button {
 .nav__toggle[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .nav__toggle[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
+
 .nav__toggle[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -218,7 +238,6 @@ button {
 }
 
 /* ---------- 5. HERO SECTION ---------- */
-
 .hero {
   position: relative;
   background: var(--gradient-hero);
@@ -239,13 +258,10 @@ button {
 .hero__inner {
   position: relative;
   z-index: 1;
-
   display: flex;
   align-items: center;
   gap: 64px;
-
   padding-block: 72px;
-
   min-height: calc(100vh - 84px);
 }
 
@@ -258,7 +274,6 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
   color: var(--color-accent);
   font-size: 13px;
   font-weight: 700;
@@ -274,11 +289,9 @@ button {
 
 .hero__title {
   margin-top: 18px;
-
   font-size: clamp(42px, 5vw, 64px);
   font-weight: 500;
   line-height: 1.08;
-
   color: var(--color-text);
   letter-spacing: -1.5px;
 }
@@ -286,14 +299,12 @@ button {
 .hero__title strong {
   display: block;
   margin-top: 8px;
-
   color: var(--color-primary-dark);
   font-weight: 800;
 }
 
 .hero__subtitle {
   margin-top: 24px;
-
   color: var(--color-primary);
   font-size: 20px;
   font-weight: 600;
@@ -301,9 +312,7 @@ button {
 
 .hero__desc {
   margin-top: 14px;
-
   max-width: 520px;
-
   color: var(--color-text-muted);
   font-size: 16px;
   line-height: 1.8;
@@ -313,7 +322,6 @@ button {
   display: flex;
   align-items: center;
   gap: 14px;
-
   margin-top: 32px;
 }
 
@@ -324,9 +332,7 @@ button {
 .btn--secondary {
   background: var(--color-white);
   color: var(--color-primary-dark);
-
   border: 1px solid rgba(7, 137, 173, 0.25);
-
   box-shadow: 0 8px 20px rgba(20, 50, 60, 0.06);
 }
 
@@ -339,9 +345,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
-
   margin-top: 28px;
-
   color: var(--color-text-muted);
   font-size: 13px;
   font-weight: 500;
@@ -359,11 +363,9 @@ button {
 
 .hero__media {
   flex: 1 1 500px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
 }
 
@@ -371,10 +373,7 @@ button {
   width: 100%;
   max-width: 570px;
   height: auto;
-
-  filter: drop-shadow(
-    0 24px 35px rgba(20, 60, 75, 0.10)
-  );
+  filter: drop-shadow(0 24px 35px rgba(20, 60, 75, 0.10));
 }
 
 /* ---------- 6. ZALO CHAT BUBBLE ---------- */
@@ -404,7 +403,6 @@ button {
   z-index: 2;
 }
 
-/* Vòng sóng lan toả (ping) để thu hút chú ý */
 .zalo-chat__ping {
   position: absolute;
   inset: 0;
@@ -425,7 +423,6 @@ button {
   }
 }
 
-/* Tooltip hiện khi hover (chỉ hữu ích trên desktop) */
 .zalo-chat__tooltip {
   position: absolute;
   right: calc(100% + 14px);
@@ -745,9 +742,7 @@ button {
   .hero__inner {
     flex-direction: column;
     text-align: center;
-
     padding-block: 56px;
-
     min-height: auto;
   }
 
@@ -787,7 +782,7 @@ button {
 @media (max-width: 768px) {
   .nav {
     position: absolute;
-    top: 84px;
+    top: 76px;
     left: 0;
     right: 0;
     background: var(--color-white);
@@ -806,6 +801,7 @@ button {
     align-items: flex-start;
     gap: 0;
     padding: 8px 24px 20px;
+    margin-left: 0;
   }
 
   .nav__list li {
@@ -819,6 +815,11 @@ button {
 
   .nav__toggle {
     display: flex;
+  }
+
+  .logo__image {
+    width: 145px;
+    max-width: 145px;
   }
 }
 
@@ -859,34 +860,36 @@ button {
     flex-direction: column;
     text-align: center;
   }
-   .logo__image {
-  width: 155px;
-}
 
-.hero__title {
-  font-size: 36px;
-  letter-spacing: -0.8px;
-}
+  .logo__image {
+    width: 140px;
+    max-width: 140px;
+  }
 
-.hero__subtitle {
-  font-size: 17px;
-}
+  .hero__title {
+    font-size: 36px;
+    letter-spacing: -0.8px;
+  }
 
-.hero__desc {
-  font-size: 14.5px;
-}
+  .hero__subtitle {
+    font-size: 17px;
+  }
 
-.hero__actions {
-  flex-direction: column;
-  width: 100%;
-}
+  .hero__desc {
+    font-size: 14.5px;
+  }
 
-.hero__actions .btn {
-  width: 100%;
-}
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
 
-.hero__trust {
-  flex-direction: column;
-  gap: 8px;
-}
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__trust {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
