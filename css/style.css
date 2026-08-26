@@ -27,3 +27,98 @@ html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"S
 @media(max-width:768px){.site-header__inner{height:76px}.logo__image{width:145px;max-width:145px}.nav{position:absolute;top:76px;left:0;right:0;background:#fff;border-bottom:1px solid var(--color-border);max-height:0;overflow:hidden;margin-left:0;transition:max-height var(--transition)}.nav--open{max-height:360px}.nav__list{flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 20px;margin-left:0}.nav__list li{width:100%}.nav__link{display:block;padding:12px 0}.nav__toggle{display:flex}.hero__inner{gap:36px;padding-block:48px}.hero__title{font-size:42px}.hero__subtitle{font-size:18px}.hero__desc{font-size:15px}.hero__actions{flex-direction:column;width:100%}.hero__actions .btn{width:100%}.hero__trust{width:100%;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:center;align-items:center;gap:8px}.hero__trust span{flex:0 1 auto;white-space:nowrap;font-size:11px;gap:3px}.about__inner{flex-direction:column;align-items:stretch;gap:28px}.about__media{width:180px;flex:0 0 auto;margin-inline:auto}.about__content{text-align:left}.about__content .section-title{text-align:center}.about__stats{justify-content:center;gap:18px;flex-wrap:nowrap}.about__stats li{text-align:center;min-width:0}.about__stats strong{font-size:22px}.about__stats span{font-size:12px;white-space:nowrap}.section{padding-block:70px}.section-header{margin-bottom:36px}.section-title{font-size:29px}.service__grid{grid-template-columns:1fr;gap:18px}.service-card{min-height:0;padding:30px 24px 28px}.service-card__icon{flex-basis:72px;width:72px;height:72px}.service-card__icon::before{width:46px;height:46px}.contact__grid{grid-template-columns:1fr;gap:16px}.contact-card{padding:24px 18px}.zalo-chat{right:16px;bottom:16px;width:52px;height:52px}.site-footer__inner{flex-direction:column;text-align:center}}
 @media(max-width:380px){.hero__trust{gap:5px}.hero__trust span{font-size:9.5px}.hero__trust span:nth-child(1){letter-spacing:-.2px}.hero__trust span:nth-child(2){letter-spacing:-.3px}.hero__trust span:nth-child(3){letter-spacing:-.2px}.hero__title{font-size:36px}.about__stats{gap:10px}.about__stats strong{font-size:20px}.about__stats span{font-size:11px}}
 @media(max-width:340px){.hero__trust{gap:3px}.hero__trust span{font-size:9px}.hero__actions .btn{padding-inline:24px}}
+
+
+/* === NGUYEN TRANG BOOKING - SERVICE CARD VISUAL UPDATE === */
+.service-card {
+  min-height: 286px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 34px 28px 30px;
+}
+
+.service-card__icon {
+  position: relative;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  border-radius: 22px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px rgba(7, 137, 173, 0.06);
+}
+
+.service-card__icon svg {
+  display: none;
+}
+
+.service-card__icon::before {
+  content: '';
+  width: 48px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* 1. Đặt vé máy bay - máy bay + đường bay */
+.service-card:nth-child(1) .service-card__icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpath d='M10 40c13-3 25-9 35-18 5-5 9-8 12-7 2 1 1 5-3 9-9 10-22 17-38 21' stroke='%230789ad' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M18 35 25 20l4 1-1 12 12-6 4 3-11 9 7 8-4 2-10-6-9 3z' fill='%23f5aa00'/%3E%3Ccircle cx='51' cy='48' r='3' fill='%230789ad'/%3E%3C/svg%3E");
+}
+
+/* 3. Tư vấn lịch trình - tư vấn viên */
+.service-card:nth-child(3) .service-card__icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Ccircle cx='32' cy='20' r='10' fill='%23f5aa00'/%3E%3Cpath d='M14 54c1-12 8-20 18-20s17 8 18 20' fill='%230789ad'/%3E%3Cpath d='M17 23c0-8 6-14 15-14s15 6 15 14' stroke='%23075a73' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M47 23v7M50 23v7' stroke='%23075a73' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M47 29c-1 5-5 8-9 9' stroke='%23075a73' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* 4. Đặt vé nhóm / doanh nghiệp - tòa nhà + nhóm người */
+.service-card:nth-child(4) .service-card__icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpath d='M10 54V18l22-8 22 8v36' fill='%23eef8fa' stroke='%23075a73' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M20 25h6M38 25h6M20 34h6M38 34h6M20 43h6M38 43h6' stroke='%230789ad' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M28 54V44h8v10' stroke='%23f5aa00' stroke-width='4' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='48' r='5' fill='%23f5aa00'/%3E%3Ccircle cx='42' cy='51' r='4' fill='%230789ad'/%3E%3C/svg%3E");
+}
+
+.service-card h3 {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.service-card p {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .service-card {
+    min-height: 0;
+    padding: 30px 24px 28px;
+  }
+
+  .service-card__icon {
+    flex-basis: 72px;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+  }
+
+  .service-card__icon::before {
+    width: 46px;
+    height: 46px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p {
+    max-width: 330px;
+  }
+}
