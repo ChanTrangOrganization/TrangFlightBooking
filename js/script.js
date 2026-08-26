@@ -52,10 +52,19 @@ function initHeroDots() {
 /**
  * Đếm số vé đã xuất từ 1 lên 10.000+ khi phần Về tôi xuất hiện.
  * Chạy một lần duy nhất rồi dừng ở 10.000+.
+ *
+ * Bộ đếm được cố định chiều rộng để các thống kê bên cạnh không bị
+ * dịch chuyển ngang khi số chữ số tăng trong quá trình animation.
  */
 function initTicketCounter() {
   const counter = document.querySelector('.js-counter');
   if (!counter) return;
+
+  // Giữ nguyên vị trí của các stat khác trong suốt quá trình đếm.
+  counter.style.display = 'inline-block';
+  counter.style.width = '7.5ch';
+  counter.style.textAlign = 'center';
+  counter.style.whiteSpace = 'nowrap';
 
   const target = Number(counter.dataset.target) || 10000;
   const suffix = counter.dataset.suffix || '';
