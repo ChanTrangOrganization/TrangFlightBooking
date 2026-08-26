@@ -1,12 +1,14 @@
 /**
  * Nguyễn Trang Booking - Landing Page
- * Xử lý: (1) menu mobile, (2) chọn dot ở hero section, (3) bộ đếm vé đã xuất.
+ * Xử lý: (1) menu mobile, (2) chọn dot ở hero section, (3) bộ đếm vé đã xuất,
+ * (4) bố cục phần Về tôi trên mobile.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initHeroDots();
   initTicketCounter();
+  initMobileAboutLayout();
 });
 
 /** Bật/tắt menu điều hướng trên mobile khi bấm nút hamburger. */
@@ -70,7 +72,6 @@ function initTicketCounter() {
 
     const animate = (currentTime) => {
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      // Ease-out: chạy nhanh lúc đầu và chậm dần khi gần 10.000.
       const eased = 1 - Math.pow(1 - progress, 3);
       const value = Math.floor(1 + (target - 1) * eased);
 
@@ -86,7 +87,6 @@ function initTicketCounter() {
     requestAnimationFrame(animate);
   };
 
-  // Chỉ bắt đầu khi người dùng cuộn đến phần Về tôi.
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       if (entries.some((entry) => entry.isIntersecting)) {
@@ -99,4 +99,81 @@ function initTicketCounter() {
   } else {
     startCounter();
   }
+}
+
+/**
+ * Trên điện thoại, phần Về tôi chuyển thành bố cục dọc:
+ * hình ảnh ở trên, nội dung nằm bên dưới để không bị ép ngang.
+ * Chỉ áp dụng cho màn hình <= 768px, không ảnh hưởng desktop.
+ */
+function initMobileAboutLayout() {
+  const about = document.querySelector('.about__inner');
+  if (!about) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (max-width: 768px) {
+      .about__inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .about__media {
+        flex: 0 0 auto;
+        width: 190px;
+        max-width: 55vw;
+      }
+
+      .about__content {
+        width: 100%;
+        text-align: left;
+      }
+
+      .about__content .eyebrow,
+      .about__content .section-title {
+        text-align: center;
+      }
+
+      .about__content .section-title {
+        font-size: 28px;
+      }
+
+      .about__content .section-desc {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .about__stats {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 24px 30px;
+        margin-top: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about__inner {
+        gap: 28px;
+      }
+
+      .about__media {
+        width: 170px;
+      }
+
+      .about__content .section-title {
+        font-size: 25px;
+      }
+
+      .about__content .section-desc {
+        font-size: 14.5px;
+      }
+
+      .about__stats {
+        gap: 20px;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
 }
