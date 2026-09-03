@@ -137,7 +137,21 @@ html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"S
   color: #0068ff;
 }
 
+.contact-card__icon--facebook {
+  color: #1877f2;
+}
+
+.contact-card__icon--facebook img {
+  width: 28px;
+  height: 28px;
+}
+
 .contact-card__icon--zalo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.contact-card__icon--zalo img {
   width: 28px;
   height: 28px;
 }
@@ -145,4 +159,18 @@ html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"S
 .contact-card h3,
 .contact-card p {
   text-align: center;
+}
+
+.service-card__icon img {
+  transform: scale(0.85);
+}
+
+.about__stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__stats span {
+  display: block;
 }
